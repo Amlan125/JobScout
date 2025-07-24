@@ -21,7 +21,7 @@ else:
 config = {
     "gemini_api_key": os.environ.get("GEMINI_API_KEY"),
     "adzuna": {
-        "country": os.environ.get("ADZUNA_COUNTRY", "in"),
+        "country": os.environ.get("ADZUNA_COUNTRY", "de"),
         "app_id": os.environ.get("ADZUNA_APP_ID"),
         "app_key": os.environ.get("ADZUNA_APP_KEY"),
         "results_per_page": int(os.environ.get("ADZUNA_RESULTS_PER_PAGE") or 5),
