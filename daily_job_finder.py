@@ -1,5 +1,4 @@
 import requests
-import yaml
 import json
 import os
 from datetime import datetime
@@ -19,9 +18,25 @@ if os.path.exists(cache_file) and os.path.getsize(cache_file) > 0:
 else:
     cache = {"job_ids": []}
 
-# Load config
-with open('config.yaml', 'r') as f:
-    config = yaml.safe_load(f)
+# Load config from environment variables
+config = {
+    "adzuna": {
+        "app_id": os.environ.get("ADZUNA_APP_ID"),
+        "app_key": os.environ.get("ADZUNA_APP_KEY"),
+        "country": os.environ.get("ADZUNA_COUNTRY", "us"),
+        "search_term": os.environ.get("ADZUNA_SEARCH_TERM", "python developer"),
+        "results_per_page": int(os.environ.get("ADZUNA_RESULTS_PER_PAGE", 5)),
+    },
+    "gemini": {
+        "api_key": os.environ.get("GEMINI_API_KEY"),
+    },
+    "email": {
+        "smtp_user": os.environ.get("EMAIL_SMTP_USER"),
+        "smtp_password": os.environ.get("EMAIL_SMTP_PASSWORD"),
+        "recipient": os.environ.get("EMAIL_RECIPIENT"),
+        "subject": os.environ.get("EMAIL_SUBJECT", "🧠 Daily AI Job Digest"),
+    }
+}
 
 # Configure Gemini API
 genai.configure(api_key=config['gemini']['api_key'])
@@ -115,4 +130,3 @@ if __name__ == "__main__":
     except Exception:
         traceback.print_exc()
         exit(1)
-
