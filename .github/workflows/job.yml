@@ -1,9 +1,13 @@
 name: Daily Job Finder
 
+# Trigger daily job finder at 16:01 UTC
 on:
-  workflow_dispatch:   # Manual trigger
+  workflow_dispatch:
   schedule:
-    - cron: '1 16 * * *'  # Runs daily at 9:00 AM UTC (adjust if needed)
+    - cron: '07 16 * * *'  # Runs daily at 16:01 UTC
+    - cron: '07 15 * * *'
+    - cron: '07 17 * * *'
+    - cron: '07 18 * * *'
 
 jobs:
   run-job:
