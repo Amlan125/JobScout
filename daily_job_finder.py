@@ -100,7 +100,7 @@ def main():
         print("No new jobs today.")
         return
 
-    for job in new_jobs:
+    for job in new_jobs[:1]:  # only first 5 jobs
         job['summary'] = summarize_job(job)
 
     digest = generate_digest(new_jobs)
