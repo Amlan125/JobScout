@@ -30,8 +30,8 @@ config = {
     "email": {
         "subject": os.environ.get("EMAIL_SUBJECT", "Daily Job Digest"),
         "recipient": os.environ.get("EMAIL_RECIPIENT"),
-        "smtp_user": os.environ.get("SMTP_USER"),
-        "smtp_password": os.environ.get("SMTP_PASSWORD")
+        "email_smtp_user": os.environ.get("EMAIL_SMTP_USER"),
+        "email_smtp_password": os.environ.get("EMAIL_SMTP_PASSWORD")
     }
 }
 
@@ -109,8 +109,9 @@ def main():
         digest,
         config['email']['subject'],
         config['email']['recipient'],
-        config['email']['smtp_user'],
-        config['email']['smtp_password']
+        config['email']['email_smtp_user']
+        config['email']['email_smtp_password']
+
     )
 
     cache['job_ids'].extend(job['id'] for job in new_jobs)
