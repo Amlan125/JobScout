@@ -4,10 +4,7 @@ name: Daily Job Finder
 on:
   workflow_dispatch:
   schedule:
-    - cron: '07 16 * * *'  # Runs daily at 16:01 UTC
-    - cron: '07 15 * * *'
-    - cron: '07 17 * * *'
-    - cron: '07 18 * * *'
+    - cron: '*/5 * * * *' 
 
 jobs:
   run-job:
