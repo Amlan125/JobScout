@@ -2,6 +2,7 @@ name: Daily Job Finder
 
 # Trigger daily job finder at 16:01 UTC
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *' 
 
