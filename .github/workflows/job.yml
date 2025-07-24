@@ -3,7 +3,7 @@ name: Daily Job Finder
 on:
   workflow_dispatch:   # Manual trigger
   schedule:
-    - cron: '0 9 * * *'  # Runs daily at 9:00 AM UTC (adjust if needed)
+    - cron: '25 17 * * *'  # Runs daily at 9:00 AM UTC (adjust if needed)
 
 jobs:
   run-job:
