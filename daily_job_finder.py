@@ -109,7 +109,7 @@ def main():
         digest,
         config['email']['subject'],
         config['email']['recipient'],
-        config['email']['email_smtp_user']
+        config['email']['email_smtp_user'],
         config['email']['email_smtp_password']
 
     )
