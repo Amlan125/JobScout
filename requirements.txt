@@ -4,3 +4,7 @@ openai
 requests
 pyyaml
 yagmail
+google-generativeai
+PyYAML
+jinja2
+markdown
