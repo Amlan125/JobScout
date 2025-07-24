@@ -30,8 +30,8 @@ config = {
     "email": {
         "subject": os.environ.get("EMAIL_SUBJECT", "Daily Job Digest"),
         "recipient": os.environ.get("EMAIL_RECIPIENT"),
-        "smtp_user": os.environ.get("EMAIL_SMTP_USER"),
-        "smtp_password": os.environ.get("EMAIL_SMTP_PASSWORD")
+        "smtp_user": os.environ.get("SMTP_USER"),
+        "smtp_password": os.environ.get("SMTP_PASSWORD")
     }
 }
 
