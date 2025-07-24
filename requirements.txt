@@ -1,0 +1,6 @@
+## `requirements.txt`
+
+openai
+requests
+pyyaml
+yagmail
