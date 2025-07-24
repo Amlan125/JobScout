@@ -1,17 +1,16 @@
-import requests
-import json
 import os
+import json
+import requests
 from datetime import datetime
 import google.generativeai as genai
-from email_builder import generate_digest
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+from email_builder import generate_digest
 
-# Load cache safely
 cache_file = 'cache.json'
 
+# Load cache safely
 if os.path.exists(cache_file) and os.path.getsize(cache_file) > 0:
     with open(cache_file, 'r') as f:
         cache = json.load(f)
@@ -20,27 +19,25 @@ else:
 
 # Load config from environment variables
 config = {
+    "gemini_api_key": os.environ.get("GEMINI_API_KEY"),
     "adzuna": {
+        "country": os.environ.get("ADZUNA_COUNTRY", "in"),
         "app_id": os.environ.get("ADZUNA_APP_ID"),
         "app_key": os.environ.get("ADZUNA_APP_KEY"),
-        "country": os.environ.get("ADZUNA_COUNTRY", "us"),
-        "search_term": os.environ.get("ADZUNA_SEARCH_TERM", "python developer"),
-        "results_per_page": int(os.environ.get("ADZUNA_RESULTS_PER_PAGE", 5)),
-    },
-    "gemini": {
-        "api_key": os.environ.get("GEMINI_API_KEY"),
+        "results_per_page": int(os.environ.get("ADZUNA_RESULTS_PER_PAGE") or 5),
+        "search_term": os.environ.get("ADZUNA_SEARCH_TERM", "python developer")
     },
     "email": {
-        "smtp_user": os.environ.get("EMAIL_SMTP_USER"),
-        "smtp_password": os.environ.get("EMAIL_SMTP_PASSWORD"),
+        "subject": os.environ.get("EMAIL_SUBJECT", "Daily Job Digest"),
         "recipient": os.environ.get("EMAIL_RECIPIENT"),
-        "subject": os.environ.get("EMAIL_SUBJECT", "🧠 Daily AI Job Digest"),
+        "smtp_user": os.environ.get("EMAIL_SMTP_USER"),
+        "smtp_password": os.environ.get("EMAIL_SMTP_PASSWORD")
     }
 }
 
 # Configure Gemini API
-genai.configure(api_key=config['gemini']['api_key'])
-model = genai.GenerativeModel('gemini-1.5-flash')  # or 'gemini-1.5-pro'
+genai.configure(api_key=config['gemini_api_key'])
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 def fetch_jobs():
     print("Fetching jobs from Adzuna...")
@@ -91,7 +88,6 @@ def send_email(html_content, subject, to_email, smtp_user, smtp_password):
     part = MIMEText(html_content, "html")
     msg.attach(part)
 
-    # Using Gmail SMTP server as example; adjust if different
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
         server.login(smtp_user, smtp_password)
