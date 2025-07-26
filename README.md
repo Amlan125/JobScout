@@ -1,4 +1,4 @@
-# 🧠 JobScout – AI-Powered Daily Job Digest
+# JobScout – AI-Powered Daily Job Digest
 
 JobScout is an AI-powered automation tool that helps you discover new job opportunities effortlessly.
 Every day, it automatically fetches fresh job listings from the Adzuna API based on your chosen keywords and location. These listings are then summarized into short, clear highlights using Gemini AI, turning lengthy job descriptions into easy-to-skim insights.
@@ -10,14 +10,14 @@ JobScout is fully automated using GitHub Actions as a scheduler, written entirel
 ---
 
 
-## ✨ Features
+## Features
 - Fetch jobs daily from Adzuna (free job API)
 - Summarize and rank jobs using OpenAI
 - Email yourself a daily digest
 - Cache to avoid duplicate jobs
 - Easy to extend (Slack, Notion, etc.)
 
-## ⚙️ How it works
+## How it works
 1. Scheduler triggers script daily (cron / GitHub Actions)
 2. Fetch jobs by keywords & location from Adzuna
 3. Summarize jobs with OpenAI
@@ -25,7 +25,7 @@ JobScout is fully automated using GitHub Actions as a scheduler, written entirel
 5. Send to your inbox
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Python** (main logic)
 - **Google Generative AI (Gemini)** for job summarization
 - **Adzuna API** for job listings
@@ -33,14 +33,14 @@ JobScout is fully automated using GitHub Actions as a scheduler, written entirel
 - **GitHub Actions** as the scheduler
 - **JSON** for caching
 
-## 📦 Setup & Installation
+## Setup & Installation
 ```bash
 git clone https://github.com/yourusername/daily_job_scout.git
 cd daily_job_scout
 pip install -r requirements.txt
 ```
 
-## 🔒 Set up Secrets in GitHub
+## Set up Secrets in GitHub
 
 Go to **Repository → Settings → Secrets → Actions → New repository secret** and add the following:
 
@@ -59,7 +59,7 @@ Go to **Repository → Settings → Secrets → Actions → New repository secre
 
 ---
 
-## ⚙️ Configure the Workflow
+## Configure the Workflow
 
 The workflow file is located at:
 
@@ -71,5 +71,5 @@ It is already configured to run daily at the preferred UTC using a cron schedule
 It can also be manually triggered at any time from the Actions tab in the GitHub repository.
 
 
-🧑‍💻 Author
+ Author
 Built by Amlan (https://github.com/Amlan125)
