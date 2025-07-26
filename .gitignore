@@ -1,3 +1,4 @@
 JobScout
-"config.yaml" 
-_pycache_
+config.yaml
+__pycache__/
+*.py[cod]
