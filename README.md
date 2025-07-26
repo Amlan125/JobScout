@@ -74,3 +74,4 @@ It can also be manually triggered at any time from the Actions tab in the GitHub
 ## Author
 
 Built by Amlan (https://github.com/Amlan125)
+Email: abgohain77@gmail.com
