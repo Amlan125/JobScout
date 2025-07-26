@@ -33,7 +33,7 @@ JobScout is fully automated using GitHub Actions as a scheduler, written entirel
 - **GitHub Actions** as the scheduler
 - **JSON** for caching
 
-## 📦 Install
+## 📦 Setup & Installation
 ```bash
 git clone https://github.com/yourusername/daily_job_scout.git
 cd daily_job_scout
